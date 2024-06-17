@@ -1,0 +1,67 @@
+.chatfeedback {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin: 20px auto;
+  gap: 10px;
+}
+
+.chatfeedback .button1 {
+  flex: 1;
+  padding: 10px;
+  background-color: #bbb;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.chatfeedback .button1:hover {
+  background-color: #aaa;
+}
+
+.chatfeedback .button2 {
+  flex: 1;
+  padding: 10px;
+  background-color: #fff;
+  color: #bbb;
+  border: 1px solid #bbb;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.chatfeedback .button2:hover {
+  background-color: #eee;
+}
+
+.chatting {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.chatting textarea {
+  flex: 1;
+  margin-right: 20px;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  width: 80%;
+  font-size: 16px;
+  font-family:Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+  border: 1px solid #aaa;
+  outline: none;
+  resize: none;
+  overflow: hidden;
+}
+
+.chatting .save {
+  flex: 0;
+  background-color: #fff;
+  border-radius: 10px;
+  border: 1px solid #aaa;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+}

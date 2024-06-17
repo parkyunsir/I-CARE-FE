@@ -1,4 +1,4 @@
-.add .date {
+.addDiary .date {
   background-color: #fff;
   border: 1px solid #ddd;
   padding: 20px;
@@ -8,7 +8,7 @@
   font-size: 16px;
 }
 
-.add .content {
+.addDiary .content {
   background-color: #fff;
   margin-top: 10px;
   padding: 15px;
@@ -23,7 +23,7 @@
   overflow: hidden;
 }
 
-.add .save {
+.addDiary .save {
   width: 100%;
   background-color: #6271f5;
   border: none;
@@ -33,6 +33,6 @@
   border-radius: 10px;
 }
 
-.add .save:hover {
+.addDiary .save:hover {
   background-color: #454fac;
 }

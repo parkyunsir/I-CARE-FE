@@ -5,6 +5,8 @@ import DiaryDay from "./DiaryDay";
 import DiarySummary from "./DiarySummary";
 import { getDiaryList } from "./api/api-diary";
 import { useLocation } from "react-router-dom";
+import Header from "../Header";
+import PageFirst from "../PageFirst";
 
 const DiaryCalendar = () => {
   const location = useLocation();
@@ -103,7 +105,8 @@ const DiaryCalendar = () => {
   };
 
   return (
-    <div>
+    <PageFirst>
+      <Header title="공감일기" type="home" />
       <div className="calendar">
         <div className="month">
           <button onClick={onLeftClick}>{'<'}</button>
@@ -120,7 +123,7 @@ const DiaryCalendar = () => {
         </div>
       </div>
       {selectedDiary && <DiarySummary selectedDiary={selectedDiary} />}
-    </div>
+    </PageFirst>
   );
 }
 

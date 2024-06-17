@@ -4,14 +4,14 @@ import {Link} from "react-router-dom";
 import {signup} from "./api/api-login";
 
 function SignUp() {
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         // 오브젝트에서 form에 저장된 데이터를 맵의 형태로 바꿔줌.
         const data = new FormData(event.target);
-        const username = data.get("username");
+        const email = data.get("email");
         const password = data.get("password");
 
-        signup({username: username, password: password}).then(
+        await signup({email: email, password: password}).then(
             (response) => {
                 // 계정 생성 성공시 login 페이지로 리다이렉트
                 window.location.href = "/login";
@@ -31,11 +31,11 @@ function SignUp() {
                     <Grid item xs={12}>
                         <TextField
                             autoComplete="fname"
-                            name="username"
+                            name="email"
                             variant="outlined"
                             required
                             fullWidth
-                            id="username"
+                            id="email"
                             label="아이디"
                             autoFocus
                         />

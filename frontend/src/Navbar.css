@@ -6,40 +6,39 @@
   box-sizing: border-box;
   }
 
-  .navbar .big_image {
-    margin-top: 8px;
-    margin-bottom: -0.1rem;
-    width: 37%;
-    height: 37%;
-   object-fit: cover;
-  }
+.navbar .big_image {
+  margin-top: 8px;
+  margin-bottom: -0.1rem;
+  width: 37%;
+  height: 37%;
+  object-fit: cover;
+}
 
-  .navbar img {
-    margin-top: 5px;
-    margin-bottom: -5px;
-    width: 45%;
-    height: 45%;
-   object-fit: cover;
-  }
+.navbar img {
+  margin-top: 5px;
+  margin-bottom: -5px;
+  width: 45%;
+  height: 45%;
+  object-fit: cover;
+}
 
-  .nav-link {
-    /* 수평정렬, 5개의 button을 각각 20% width만큼 할당 */
-    float: left;
-    width: 20%;
-    text-align: center;
-  
-    /* 세로길이 설정 */
-    height: 45px;
-    line-height: 20px;
-  }
-  
-  /* 하단 네비바의 메뉴를 눌렀을 때 색상 변경*/
-  .active {
-    color: #6271f5;
-  }
-  
-  /* 하단 네비바의 메뉴를 안 눌렀을 때 색상 변경*/
-  .inactive {
-    color: #808080;
-  }
-  
+.nav-link {
+  /* 수평정렬, 5개의 button을 각각 20% width만큼 할당 */
+  float: left;
+  width: 20%;
+  text-align: center;
+
+  /* 세로길이 설정 */
+  height: 45px;
+  line-height: 20px;
+}
+
+/* 하단 네비바의 메뉴를 눌렀을 때 색상 변경*/
+.active {
+  color: #6271f5;
+}
+
+/* 하단 네비바의 메뉴를 안 눌렀을 때 색상 변경*/
+.inactive {
+  color: #808080;
+}

@@ -1,15 +1,15 @@
-.todayOutput {
+.addQ .todayOutput {
     background-color: #fff;
 }
 
-.uploadIcon {
+.addQ .uploadIcon {
     padding-top:3px;
     color: black;
     cursor: pointer; /* 손가락 모양 커서 */
 }
 
 
-.date {
+.addQ .date {
     display: flex;
     justify-content: space-between;
     color: #999999;

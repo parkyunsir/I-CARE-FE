@@ -6,7 +6,7 @@ const Navbar = () => {
   // 현재 주소
   const location = useLocation();
 
-  const isFirstLink = matchPath({path: '/first/*'}, location.pathname); //00봇
+  const isChatBotLink = matchPath({path: '/chatbot/*'}, location.pathname); //00봇
   const isSecondLink = matchPath({path: '/second/*'}, location.pathname); //실시간 영상
   const isDiaryLink = matchPath({path: '/diary/*'}, location.pathname); //공감일기
   const isProfileLink = matchPath({path: '/profile/*'}, location.pathname); //워드 클라우드
@@ -15,14 +15,14 @@ const Navbar = () => {
     <nav className="navbar">
       
       {/* 00봇 아이콘 */}
-      <Link to="/first" className="nav-link" style={{ textDecoration: 'none', fontSize:'0.7rem'}}>
+      <Link to="/chatbot" className="nav-link" style={{ textDecoration: 'none', fontSize:'0.7rem'}}>
         <div>
-          {isFirstLink ? (
+          {isChatBotLink ? (
           <img src="/bot.png" alt="챗봇" /> //선택 했을 때
           ) : (
           <img src="/bot_un.png" alt="챗봇" /> // 선택 안 했을 때
           )}
-          <div className={isFirstLink ? 'active' : 'inactive'}>00봇</div>
+          <div className={isChatBotLink ? 'active' : 'inactive'}>00봇</div>
         </div>
       </Link>
 

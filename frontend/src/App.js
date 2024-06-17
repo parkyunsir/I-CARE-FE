@@ -5,19 +5,18 @@ import DiaryDetail from "./feat_diary/DiaryDetail";
 import DiaryCalendar from "./feat_diary/DiaryCalendar";
 import AddDiary from "./feat_diary/AddDiary";
 import QuestionHome from "./feat_question/QuestionHome";
-import Navbar from "./Navbar";
 import ProfileList from "./feat_profile/ProfileList";
 import ProfileDetail from "./feat_profile/ProfileDetail";
 import Login from "./feat_login/Login";
 import SignUp from "./feat_login/SignUp";
 import Splash from "./feat_login/Splash";
+import ChatBotStart from "./feat_chatbot/ChatBotStart";
 
 function App() {
+  // localStorage.removeItem("ACCESS_TOKEN");
   return (
-    <div className="app-wrapper">
-    <div className="app-container">
-    
     <Routes>
+      <Route path="/chatbot" element={<ChatBotStart />} />
       {/* 일기 */}
       <Route path="/diary" element={<DiaryCalendar />} />
       <Route path="/diary/detail" element={<DiaryDetail />} />
@@ -41,14 +40,7 @@ function App() {
       <Route path="/splash" element={<Splash />} />
 
     </Routes>
-    </div>
-
-    <Navbar />
-    </div>
   );
-
-  
-
 }
 
 export default App;

@@ -3,6 +3,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import MAddIcon from "./modal/MAddIcon";
 import './css/AddDiary.css';
 import { postDiary, putDiary } from "./api/api-diary";
+import Header from "../Header";
+import PageFirst from "../PageFirst";
 
 const AddDiary = () => {
   const location = useLocation();
@@ -83,7 +85,9 @@ const AddDiary = () => {
   }
 
   return (
-    <div className="add">
+    <PageFirst>
+    <div className="addDiary">
+      <Header title="공감일기" type="back" />
       <div className="date">{stringDate} {weekday}요일</div>
       <textarea className="content" value={diary.content} name="content"
         onChange={onChange} ref={textareaRef}
@@ -92,6 +96,7 @@ const AddDiary = () => {
       <MAddIcon isOpen={isPopupOpen} onChange={onChange}
         onSubmit={onSubmit} onClose={handleClosePopup} diary={diary} />
     </div>
+    </PageFirst>
   );
 }
 

@@ -2,11 +2,8 @@ import { call } from "../../api/ApiService";
 
 export function signin(userDTO) {
     return call("/api/parent/login", "POST", userDTO)
-        .then((reponse) => {
-            if( reponse.token ) {
-                localStorage.setItem("ACCESS_TOKEN", reponse.token);
-                window.location.href = "/";
-            }
+        .then((response) => {
+            return response;
         });
 }
 

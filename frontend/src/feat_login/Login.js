@@ -1,16 +1,23 @@
 import React from "react";
 import {Container, Grid, Typography, TextField, Button} from "@mui/material";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {signin} from "./api/api-login";
 
 const Login = () => {
-    const handleSubmit = (event) => {
+    const navigate = useNavigate();
+    const handleSubmit = async (event) => {
         event.preventDefault();
         const data = new FormData(event.target);
         const email = data.get("email");
         const password = data.get("password");
 
-        signin({ email: email, password: password});
+        await signin({ email: email, password: password})
+            .then((response) => {
+                if( response ) {
+                    localStorage.setItem("ACCESS_TOKEN", response.token);
+                    navigate("/chatbot"); // /chatbot으로 위치 변경하기
+                }
+            });
     };
 
     return (
@@ -30,9 +37,9 @@ const Login = () => {
                             variant="outlined"
                             required
                             fullWidth
-                            id="username"
+                            id="email"
                             label ="아이디"
-                            name ="username"
+                            name ="email"
                             autoComplete="username"
                         />
                     </Grid>
@@ -43,6 +50,7 @@ const Login = () => {
                             fullWidth
                             name ="password"
                             label ="패스워드"
+                            type="password"
                             id="password"
                             autoComplete="current-password"
                         />
