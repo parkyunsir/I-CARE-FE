@@ -13,7 +13,7 @@ const ChatBotStart = () => {
   return (
     <PageFirst>
       <Header title="AI 대화" type="home" />
-      <div>현재 상황 : 비가 많이 오는데 자녀가 밖에 나가서 놀고 싶다고 하는 중입니다.</div>
+      <div>현재 상황 : 자녀가 열심히 노력했지만 받아쓰기 시험에서 낮은 성적을 받은 상황입니다.</div>
       {start ? (
         <ChatBot />
       ) : (

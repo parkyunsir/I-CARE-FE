@@ -8,10 +8,15 @@ import ArrowBackIosOutlinedIcon from '@mui/icons-material/ArrowBackIosOutlined';
 const Header = (props) => {
     const title = props.title;
     const type = props.type;
+    const routeBack = props.routeBack || null;
     const navigate = useNavigate();
 
     const goBack = () => {
-        navigate(-1);
+        if (routeBack){
+            navigate(routeBack);
+        } else {
+            navigate(-1);
+        }
     };
 
     if(type === "home") {

@@ -48,7 +48,7 @@ const DiaryDetail = () => {
   return (
     <PageFirst>
     <div className="detail">
-      <Header title="공감일기" type="back" />
+      <Header title="공감일기" type="back" routeBack="/diary" />
       <div className="date">
         {stringDate} {weekday}요일
       </div>

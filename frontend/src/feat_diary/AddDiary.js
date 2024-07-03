@@ -34,8 +34,10 @@ const AddDiary = () => {
 
   useEffect(() => {
     const textarea = textareaRef.current;
-    textarea.style.height = 'auto';
-    textarea.style.height = `${textarea.scrollHeight}px`;
+    if(textarea) {
+      textarea.style.height = 'auto';
+      textarea.style.height = `${textarea.scrollHeight}px`;
+    }
   }, [diary.content]);
 
   const onChange = (e) => {

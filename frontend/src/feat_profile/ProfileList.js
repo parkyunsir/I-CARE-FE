@@ -51,19 +51,21 @@ const ProfileList = () => {
     <PageFirst>
     <div className="profileList">
       <Header title="워드클라우드" type="home" />
-      <div className="sort">
-        <select onChange={handleSort} value={sort}>
-          <option value="latest">최신순</option>
-          <option value="old">오래된 순</option>
-        </select>
+      <div style={{display: 'flex', justifyContent: 'space-between', marginBottom: '10px'}}>
+        <div className="sort">
+          <select onChange={handleSort} value={sort}>
+            <option value="latest">최신순</option>
+            <option value="old">오래된 순</option>
+          </select>
+        </div>
+        <div className="add">
+          <AddProfile onUpdate={onUpdate} />
+        </div>
       </div>
       <div className="profiles">
         {profileList.map((profile) => (
           <Profile key={profile.profileId} profile={profile} />
         ))}
-      </div>
-      <div className="add">
-        <AddProfile onUpdate={onUpdate} />
       </div>
     </div>
     </PageFirst>

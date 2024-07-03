@@ -55,7 +55,7 @@ const ChatBot = () => {
   };
 
   const handleClick = () => {
-    navigate('/chatbot/feedback');
+    navigate('/chatbotfeedback');
   }
 
   return (
@@ -93,7 +93,7 @@ const ChatBot = () => {
           <textarea value={chat.request} name="request"
             onChange={onChange} ref={textareaRef}
             placeholder="AI와 대화 후 피드백을 받아보세요." />
-          <button className="save" onClick={onSubmitRequest}>^</button>
+          <button className="save" onClick={onSubmitRequest}>확인</button>
         </div>
       )}
     </div>

@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {Container, Grid, Typography, TextField, Button} from "@mui/material";
 import {Link, useNavigate} from "react-router-dom";
 import {signin} from "./api/api-login";
 
 const Login = () => {
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if(localStorage.getItem("ACCESS_TOKEN")) {
+            if(localStorage.getItem("childId")) {
+                navigate("/chatbot");
+            } else {
+                navigate("/addchild");
+            }
+        }
+    })
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         const data = new FormData(event.target);
@@ -15,7 +26,8 @@ const Login = () => {
             .then((response) => {
                 if( response ) {
                     localStorage.setItem("ACCESS_TOKEN", response.token);
-                    navigate("/chatbot"); // /chatbot으로 위치 변경하기
+                    navigate("/addchild");
+                    //navigate("/chatbot"); // /chatbot으로 위치 변경하기
                 }
             });
     };
@@ -25,7 +37,8 @@ const Login = () => {
             <Grid container spacing={2}>
                 <Grid item xs = {12}>
                     <Typography component="h1" variant="h5">
-                        로그인
+                    <div> 안녕하세요! </div> 
+                    <div> 부모클래스입니다 </div>
                     </Typography>
                 </Grid>
             </Grid>
@@ -38,7 +51,7 @@ const Login = () => {
                             required
                             fullWidth
                             id="email"
-                            label ="아이디"
+                            label ="이메일"
                             name ="email"
                             autoComplete="username"
                         />
@@ -58,6 +71,11 @@ const Login = () => {
                     <Grid item xs = {12}>
                         <Button type="submit" fullWidth variant="contained" color="primary">
                             로그인
+                        </Button>
+                    </Grid>
+                    <Grid item xs = {12}>
+                        <Button type="submit" fullWidth variant="contained" color="primary">
+                            카카오톡으로 계속하기
                         </Button>
                     </Grid>
                     <Grid item>

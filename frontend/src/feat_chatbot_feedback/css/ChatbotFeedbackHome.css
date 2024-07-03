@@ -1,0 +1,19 @@
+.todayInput {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 15px;
+    margin-bottom: 15px;
+  }
+  
+.search {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.selectBox {
+    font-size: 11px;
+    width: 120px;
+}

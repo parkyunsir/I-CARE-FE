@@ -3,7 +3,7 @@ import Modal from '../../Modal';
 import '../css/qmodal/MAddQuestion.css';
 import '../css/qmodal/ModalOneButton.css';
 
-const MAddQuestion = (props) => {
+const MSearchQuestion = (props) => {
   const isOpen = props.isOpen;
   const onClose = props.onClose;
 
@@ -18,4 +18,4 @@ const MAddQuestion = (props) => {
   );
 }
 
-export default MAddQuestion;
+export default MSearchQuestion;

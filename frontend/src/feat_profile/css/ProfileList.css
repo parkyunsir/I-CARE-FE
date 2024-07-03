@@ -1,6 +1,5 @@
 .profileList .sort {
   display: flex;
-  justify-content: flex-end;
 }
 
 .profileList .sort select {
@@ -9,7 +8,7 @@
   width: 100px;
   padding: 10px;
   outline: none;
-  margin-bottom: 15px;
+  margin: auto;
 }
 
 .profile {
@@ -45,7 +44,6 @@
 
 .profileList .add {
   display: flex;
-  justify-content: flex-end;
 }
 
 .profileList .add .plus {
@@ -68,4 +66,21 @@
 
 .profileList .add .plus button:hover {
   background-color: #454fac;
+}
+
+.profileList .add .block {
+  background-color: #ddd;
+  border: #999;
+  color: #999;
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  font-family: 'Courier New', Courier, monospace;
+  padding: 2px 10px;
+  border-radius: 30px;
+}
+
+.profileList .add .block span {
+  font-size: 40px;
+  margin-right: 10px;
 }

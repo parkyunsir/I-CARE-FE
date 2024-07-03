@@ -1,0 +1,33 @@
+.modalTwoButton {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  
+  .modalTwoButton button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 10px;
+  }
+  
+  .modalTwoButton .yes {
+    background-color: #6271f5;
+    color: #fff;
+    border: none;
+  }
+  
+  .modalTwoButton .yes:hover {
+    background-color: #454fac;
+  }
+  
+  .modalTwoButton .no {
+    background-color: #fff;
+    color: #6271f5;
+    border: 1px solid #6271f5;
+  }
+  
+  .modalTwoButton .no:hover {
+    background-color: #e1e1e1;
+  }

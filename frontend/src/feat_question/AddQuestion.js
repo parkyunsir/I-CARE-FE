@@ -7,12 +7,12 @@ import MAddQuestion from "./modal/MAddQuestion";
 import MAddCheckQuestion from "./modal/MAddCheckQuestion";
 
 const AddQuestion = (props) => {
-    const date = new Date(); // 날짜 받아오기 
+    const date = props.date; // 날짜 받아오기 
     const Stringdate = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`; // 오늘 날짜
 
     const [text, setText] = useState(''); // 글자수
     const [question, setQuestion] = useState({output:""});
-    const postQuestion = props.postQuestion;
+    const addQuestion = props.addQuestion;
     const [isHovered, setIsHovered] = useState(false);
 
     const [modalAddOpen, setModalAddOpen] = useState(false);  // 이미 답변 했을 시 modal 창
@@ -29,9 +29,9 @@ const AddQuestion = (props) => {
     };
 
     // 이미 작성함
-    const handleCloseAddModal = () => {
-      setModalAddOpen(false);
-    };
+    // const handleCloseAddModal = () => {
+    //   setModalAddOpen(false);
+    // };
 
     // 정말 작성?
     const handleCloseCheckModal = () => {
@@ -48,19 +48,19 @@ const AddQuestion = (props) => {
 
     //button 동작 함수 (v 버튼을 눌러야 추가가 된다.)
     const onButtonClick = () => {
-      if (Stringdate===localStorage.getItem('Stringdate')) { // 이미 작성된 경우에는 모달
-        setQuestion({output: ""});
-        setText("");
-        setModalAddOpen(true); // Add 모달
-      }
-       else { // 작성 안 됨
+      // if (Stringdate===localStorage.getItem('Stringdate')) { // 이미 작성된 경우에는 모달
+      //   setQuestion({output: ""});
+      //   setText("");
+      //   setModalAddOpen(true); // Add 모달
+      // }
+      //  else { // 작성 안 됨
         // setModalCheckOpen(true); //정말 작성할 건지
-        postQuestion(question); // 추가하고
-        localStorage.setItem('Stringdate',Stringdate); // update
+        addQuestion(question); // 추가하고
+        // localStorage.setItem('Stringdate',Stringdate); // update
         setQuestion({output: ""});
         setText("");
-        setModalCheckOpen(true);
-      }
+        // setModalCheckOpen(true);
+      
     };
 
   return (
@@ -100,11 +100,11 @@ const AddQuestion = (props) => {
         <div>{text.length}/50</div>
     </div>
 
-    <MAddQuestion
-        isOpen={modalAddOpen} onClose={handleCloseAddModal} />
+    {/* <MAddQuestion
+        isOpen={modalAddOpen} onClose={handleCloseAddModal} /> */}
 
-    <MAddCheckQuestion
-        isOpen={modalCheckOpen} onClose={handleCloseCheckModal} />
+    {/* <MAddCheckQuestion
+        isOpen={modalCheckOpen} onClose={handleCloseCheckModal} /> */}
     
     </div>
   );

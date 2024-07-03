@@ -1,0 +1,19 @@
+.modalClose button{
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #6271f5;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+  }
+  
+  .modalClose button:hover {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #454fac;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+  }

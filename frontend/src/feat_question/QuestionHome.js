@@ -3,12 +3,12 @@ import "./css/QuestionHome.css";
 import Select from 'react-select';
 import { Divider, List } from "@mui/material";
 import AddQuestion from "./AddQuestion";
-import { call } from "../api/ApiService";
 import QuestionList from "./QuestionList";
 import SearchQuestion from "./SearchQuestion";
 import Header from "../Header";
 import MSearchQuestion from "./modal/MSearchQuestion";
 import PageFirst from "../PageFirst";
+import { getQuestion, postQuestion, getQuestionByOutput } from "./api/api-question";
 
 const options = [
   { value: '오래된순', label: '오래된순' },
@@ -38,6 +38,9 @@ const QuestionHome = () => {
   const [sortOrder, setSortOrder] = useState(options[1]); // 기본값을 최신순으로 설정
   const [modalOpen, setModalOpen] = useState(false);
   
+  const date = new Date(); // 날짜 받아오기
+  const [day] = useState(new Date().toLocaleDateString());
+  
 
   const handleSortChange = (selectedOption) => {
     setSortOrder(selectedOption);
@@ -47,42 +50,47 @@ const QuestionHome = () => {
     setModalOpen(false);
   };
 
-  useEffect(() => { 
-    const childId = "temporary-childId";
-    call(`/api/question?childId=${childId}`,"GET",null)
-    .then((response) => {
-      if (response) {
-        setItems(response);
-        console.log(response);
-      }
-    })
-    .catch((error) => {
-      console.error("Error fetching items", error);
-    });
+  useEffect(() => {
+    try {
+      getQuestion()
+        .then(response => {
+          if(response) {
+            setItems(response);
+          }
+        });
+    } catch(error) {
+      console.error('Error fetching items : ', error);
+    }
   },[]);
 
   //추가 
-  const postQuestion = (item) => {
-    const childId = "temporary-childId";
-    call(`/api/question?childId=${childId}`, "POST", item)
-    .then((response) => {
-      if(response) {
-        setItems([...items, response]);
-      }
-    }) 
+  const addQuestion = (question) => {
+    try {
+      postQuestion(question)
+        .then(response => {
+          if(response) {
+            setItems([...items, response]);
+          }
+        });
+    } catch(error) {
+      console.error('Error fetching items : ', error);
+    }
   };
 
   //검색
   const searchQuestion = (item) => {
-    const childId = "temporary-childId";
-    call(`/api/question/search?childId=${childId}&output=${item.output}`, "GET", null)
-    .then((response) => {
-        if (response && response.length > 0) {
-          setItems(response);
-        } else {
-          setModalOpen(true);
-        }
-    })
+    try {
+      getQuestionByOutput(item.output)
+        .then(response => {
+          if(response && response.length > 0) {
+            setItems(response);
+          } else {
+            setModalOpen(true);
+          }
+        });
+    } catch(error) {
+      console.error('Error fetching items : ', error);
+    }
   }
 
 
@@ -91,7 +99,7 @@ const QuestionHome = () => {
       <List>
         {items.map((item, index) => (
           <React.Fragment key={item.questionId}>
-          <QuestionList item={item}
+          <QuestionList item={item} day={day}
           />
           {index < items.length - 1 && <Divider />}
           </React.Fragment> // 구분선 추가
@@ -104,7 +112,7 @@ const QuestionHome = () => {
       <List>
         {items.reverse().map((item, index) => (
           <React.Fragment key={item.questionId}>
-          <QuestionList item={item}
+          <QuestionList item={item} day={day}
           />
           {index < items.length - 1 && <Divider />}
           </React.Fragment> // 구분선 추가
@@ -122,7 +130,7 @@ const QuestionHome = () => {
 
       <div className="todayInput">어떤 놀이가 제일 좋아?</div>
 
-      <AddQuestion postQuestion={postQuestion}/>
+      <AddQuestion postQuestion={postQuestion} date={date}/>
 
       <div className="search"> 
 
@@ -142,7 +150,7 @@ const QuestionHome = () => {
       </div>
       
       <div className="questionList">
-          {questionList}  
+          {questionList}
       </div>
 
     </div>
