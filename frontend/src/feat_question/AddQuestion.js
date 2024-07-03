@@ -12,7 +12,7 @@ const AddQuestion = (props) => {
 
     const [text, setText] = useState(''); // 글자수
     const [question, setQuestion] = useState({output:""});
-    const addQuestion = props.addQuestion;
+    const postQuestion = props.postQuestion;
     const [isHovered, setIsHovered] = useState(false);
 
     const [modalAddOpen, setModalAddOpen] = useState(false);  // 이미 답변 했을 시 modal 창
@@ -55,7 +55,7 @@ const AddQuestion = (props) => {
       // }
       //  else { // 작성 안 됨
         // setModalCheckOpen(true); //정말 작성할 건지
-        addQuestion(question); // 추가하고
+        postQuestion(question); // 추가하고
         // localStorage.setItem('Stringdate',Stringdate); // update
         setQuestion({output: ""});
         setText("");
