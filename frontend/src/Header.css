@@ -1,9 +1,9 @@
 .Header {
-    padding-bottom: 10px;
+    height: 50px;
+    padding: 0 15px;
     display: flex;
     align-items: center;
     border-bottom: 1px solid #cecece;
-    margin-bottom: 15px;
 }
 
 .Header > div {

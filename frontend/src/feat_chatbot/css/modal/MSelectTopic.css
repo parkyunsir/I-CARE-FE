@@ -1,0 +1,49 @@
+.modalTopic {
+  text-align: center;
+}
+
+.modalTopic img {
+  width: 20%;
+  height: 20%;
+}
+
+.modalTopic .topic-container {
+  margin-bottom: 20px;
+  max-height: 40vh;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.modalTopic .topic-container::-webkit-scrollbar {
+  display: none;
+}
+
+.modalTopic .topic {
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #eee;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.modalTopic .topic:hover {
+  background-color: #ccc;
+}
+
+.modalTopic .topic.selected {
+  background-color: #ccc;
+}
+
+.modalTopic button.start {
+  width: 100%;
+  padding: 15px;
+  background-color: #6271f5;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+}
+
+.modalTopic button.start:hover {
+  background-color: #454fac;
+}

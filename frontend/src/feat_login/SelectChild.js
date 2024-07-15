@@ -1,94 +1,73 @@
-import React from "react";
-import {Container, Grid, Typography, TextField, Button} from "@mui/material";
-import {addchild} from "./api/api-login";
-
-// 추후 회원가입 버튼 누르면 자녀를 등록할 수 있도록 수정
+import React, { useEffect, useState } from "react";
+import { Container, Grid, Typography, Button, CircularProgress } from "@mui/material";
+import { selectchild } from "./api/api-login";
+import Header from "../Header";
+import PageFirst from "../PageFirst";
 
 function SelectChild() {
+    const [childList, setChildList] = useState([]); 
+    const [loading, setLoading] = useState(true);
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        // 오브젝트에서 form에 저장된 데이터를 맵의 형태로 바꿔줌.
-        const data = new FormData(event.target);
-        const childname = data.get("childname");
-        const birth = data.get("birth"); 
-        const gender = data.get("gender");
+    useEffect(() => {
+        fetchChildList();
+    }, []);
 
-        addchild({childname: childname, birth : birth, gender : gender}).then(
-            (response) => {
-                // 자녀 선택 성공 시 챗봇화면으로 이동
-                window.location.href = "/chatbot";
-            }
-        );
+    const fetchChildList = () => {
+        setLoading(true);
+        selectchild()
+            .then((response) => {
+                console.log(response);
+                if (Array.isArray(response) && response.length > 0) {
+                    const formattedChildList = response.map(child => ({
+                        childId: child.childId,
+                        nickname: child.nickname,
+                        name: child.name,
+                        gender: child.gender,
+                        birth: child.birth,
+                        profileState: child.profileState
+                    }));
+                    setChildList(formattedChildList);
+                } else {
+                    console.error("Invalid data format received from API or empty array");
+                }
+            })
+            .catch((error) => {
+                console.error("Error fetching child list:", error);
+            })
+            .finally(() => {
+                setLoading(false);
+            });
+    };
+
+    const handleAddChild = () => {
+        window.location.href = "/addchild";
     };
 
     return (
-        <Container component="main" maxWidth="xs" style={{marginTop: "8%"}} >
-
-
-            <form noValidate onSubmit={handleSubmit}>
-                <Grid container spacing={2}>
-                    <Grid item xs={12}>
-                        <Typography component="h1" variant="h5">
-                        <div> 자녀를 </div> 
-                        <div> 등록해주세요 </div>
-                        </Typography>
-                    </Grid>
-                    <Grid item xs={12}>
-                        <TextField 
-                            variant="outlined"
-                            required
-                            fullWidth
-                            name = "childname"
-                            label="이름"
-                            autoFocus
-                            id="childname"
-                            autoComplete="current-password"
-                        />
-                    </Grid>
-                    <Grid item xs={12}>
-                        <TextField 
-                            variant="outlined"
-                            required
-                            fullWidth
-                            name = "birth"
-                            label="생년월일"
-                            autoFocus
-                            id="birth"
-                            autoComplete="current-password"
-                        />
-                    </Grid>
-                    <Grid item xs={12}>
-                        <TextField 
-                            variant="outlined"
-                            required
-                            fullWidth
-                            name = "gender"
-                            label="성별"
-                            autoFocus
-                            id="gender"
-                            autoComplete="current-password"
-                        />
-                    </Grid>
-                    <Grid item xs={12}>
-                        <Button
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            color="primary">
-                            자녀 등록 하기
-                        </Button>
-                    </Grid>
+        <div className="app-wrapper">
+            <div className="app-container">
+            <Header title="자녀 정보" type="back"> </Header>
+            <Grid container direction="column" alignItems="center" spacing={2}>
+                {loading ? (
+                    <CircularProgress />
+                ) : (
+                    childList.map((child) => (
+                        <Grid item key={child.childId}>
+                            <Button variant="contained" color="primary">
+                                {child.name}
+                            </Button>
+                        </Grid>
+                    ))
+                )}
+                <Grid item>
+                    <Button variant="contained"  color="secondary" backgroundColor = "#6271F5" onClick={handleAddChild}>
+                        +
+                    </Button>
                 </Grid>
-                <Grid container justify="flex-end">
-                </Grid>
-            </form>
-
-        </Container>
-
-        // 등록된 아이 수 만큼 아이 선택버튼을 생성하기
-        // 자녀 계정을 추가하는 버튼을 만들어 AddChild와 연결시키기
-
+            </Grid>
+        </div>
+    </div>
     );
-};
+}
+
 export default SelectChild;

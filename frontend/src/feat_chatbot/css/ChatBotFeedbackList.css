@@ -1,0 +1,58 @@
+.chatbotFeedbackList .sort {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.chatbotFeedbackList .sort select {
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  width: 100px;
+  padding: 10px;
+  outline: none;
+}
+
+.chatbotFeedbackList .feedback {
+  margin-bottom: 15px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 0 5px 0 rgba(0,0,0,0.2);
+}
+
+.chatbotFeedbackList .feedback {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: 0 0 5px 0 rgba(0,0,0,0.2);
+}
+
+.chatbotFeedbackList .feedback .title {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+}
+
+.chatbotFeedbackList .feedback .title .date {
+  font-size: 15px;
+  margin: 7px;
+  color: #777;
+}
+
+.chatbotFeedbackList .feedback .title .detailButton {
+  background-color: #fff;
+  border: none;
+  border-radius: 20px;
+}
+
+.chatbotFeedbackList .feedback .title .detailButton:hover {
+  background-color: #eee;
+}
+
+.chatbotFeedbackList .feedback .content {
+  margin: 10px;
+  font-weight: bold;
+  font-size: 15px;
+}

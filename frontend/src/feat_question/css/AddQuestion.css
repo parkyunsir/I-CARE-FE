@@ -1,11 +1,22 @@
 .addQ .todayOutput {
     background-color: #fff;
+    border-radius: 100px;
+    padding-left: 15px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-right: 15px;
+    border: 1px solid #e9e9e9;
 }
 
 .addQ .uploadIcon {
-    padding-top:3px;
-    color: black;
+    color: white; /* 텍스트 색상 */
+    background-color: #6271f5; /* 배경색 */
     cursor: pointer; /* 손가락 모양 커서 */
+    border-radius: 50%; /* 원 모양을 만들기 위한 border-radius 설정 */
+}
+
+.addQ .uploadUnIcon {
+    color: black;
 }
 
 

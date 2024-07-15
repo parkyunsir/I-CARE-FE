@@ -3,10 +3,14 @@ import './css/DiaryDetail.css';
 import { useLocation } from "react-router-dom";
 import { getIconFont } from "./api/api-icon";
 import MEditDeleteDiary from "./modal/MEditDeleteDiary";
-import Header from "../Header";
 import PageFirst from "../PageFirst";
 
 const DiaryDetail = () => {
+  const header = {
+    title: "공감일기",
+    type: "back", 
+    routeBack: "/diary"
+  };
   const location = useLocation();
   const diary = location.state?.diary;
   const [icon, setIcon] = useState();
@@ -46,9 +50,8 @@ const DiaryDetail = () => {
   }
 
   return (
-    <PageFirst>
+    <PageFirst header={header}>
     <div className="detail">
-      <Header title="공감일기" type="back" routeBack="/diary" />
       <div className="date">
         {stringDate} {weekday}요일
       </div>

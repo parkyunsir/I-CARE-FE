@@ -9,7 +9,7 @@
 .chatfeedback .button1 {
   flex: 1;
   padding: 10px;
-  background-color: #bbb;
+  background-color: #ccc;
   color: #fff;
   border: none;
   border-radius: 10px;
@@ -17,14 +17,14 @@
 }
 
 .chatfeedback .button1:hover {
-  background-color: #aaa;
+  background-color: #bbb;
 }
 
 .chatfeedback .button2 {
   flex: 1;
   padding: 10px;
   background-color: #fff;
-  color: #bbb;
+  color: #555;
   border: 1px solid #bbb;
   border-radius: 10px;
   cursor: pointer;
@@ -37,7 +37,6 @@
 .chatting {
   display: flex;
   align-items: center;
-  margin-top: 10px;
 }
 
 .chatting textarea {
@@ -50,7 +49,7 @@
   font-size: 16px;
   font-family:Arial, Helvetica, sans-serif;
   box-sizing: border-box;
-  border: 1px solid #aaa;
+  border: 1px solid #000;
   outline: none;
   resize: none;
   overflow: hidden;
@@ -60,8 +59,12 @@
   flex: 0;
   background-color: #fff;
   border-radius: 10px;
-  border: 1px solid #aaa;
-  padding: 10px 15px;
-  font-size: 16px;
+  border: 1px solid #000;
+  padding: 10px 10px;
+  font-size: 10px;
   cursor: pointer;
+}
+
+.chatting .save:hover {
+  background-color: #eee;
 }

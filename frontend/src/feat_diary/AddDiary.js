@@ -3,10 +3,13 @@ import { useLocation, useNavigate } from "react-router-dom";
 import MAddIcon from "./modal/MAddIcon";
 import './css/AddDiary.css';
 import { postDiary, putDiary } from "./api/api-diary";
-import Header from "../Header";
 import PageFirst from "../PageFirst";
 
 const AddDiary = () => {
+  const header = {
+    title: "공감일기",
+    type: "back"
+  };
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -87,9 +90,8 @@ const AddDiary = () => {
   }
 
   return (
-    <PageFirst>
+    <PageFirst header={header}>
     <div className="addDiary">
-      <Header title="공감일기" type="back" />
       <div className="date">{stringDate} {weekday}요일</div>
       <textarea className="content" value={diary.content} name="content"
         onChange={onChange} ref={textareaRef}

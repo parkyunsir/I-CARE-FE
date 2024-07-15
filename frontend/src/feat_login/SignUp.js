@@ -1,5 +1,5 @@
 import React from "react";
-import {Container, Grid, Typography, TextField, Button} from "@mui/material";
+import {Container, Grid, Typography, TextField, Button, Box} from "@mui/material";
 import {Link, useNavigate} from "react-router-dom";
 import {signup} from "./api/api-login";
 
@@ -27,74 +27,89 @@ function SignUp() {
             <form noValidate onSubmit={handleSubmit}>
                 <Grid container spacing={2}>
                     <Grid item xs={12}>
-                        <Typography component="h1" variant="h5">
-                            <div> 반갑습니다 ^_^ </div> 
-                            <div> 부모클래스입니다 </div>
-                        </Typography>
+                        <Box mt={7}>
+                            <Typography component="h2" variant="h5" style= {{ fontWeight: "bold"}}>
+                                <div> 반갑습니다 :) </div> 
+                                <div> 부모클래스입니다 </div>
+                            </Typography>
+                        </Box>
                     </Grid>
                     <Grid item xs={12}>
+                        <Box mt = {2}>
+                        <Typography component="label" variant="body2" style={{ marginBottom: "10px" }}>
+                            이메일
+                        </Typography>
                         <TextField
                             autoComplete="fname"
                             name="email"
                             variant="outlined"
-                            required
                             fullWidth
                             id="email"
-                            label="아이디"
+                            placeholder="이메일을 입력하세요"
                             autoFocus
                         />
+                        </Box>
                     </Grid>
                     <Grid item xs={12}>
+                        <Box mt = {2}>
+                        <Typography component="label" variant="body2" style={{ marginBottom: "10px" }}>
+                            비밀번호 입력
+                        </Typography>
                         <TextField 
                             variant="outlined"
-                            required
                             fullWidth
                             name = "password"
-                            label="패스워드"
+                            placeholder="비밀번호을 입력하세요"
                             autoFocus
                             id="password"
                             autoComplete="current-password"
                         />
+                        </Box>
                     </Grid>
                     <Grid item xs={12}>
-                        <TextField 
-                            variant="outlined"
-                            required
-                            fullWidth
-                            name = "passwordverify"
-                            label="패스워드 확인"
-                            autoFocus
-                            id="passwordverify"
-                            autoComplete="current-password"
+                        <Box mt = {2}>
+                            <Typography component="label" variant="body2" style={{ marginBottom: "10px" }}>
+                                비밀번호 확인
+                            </Typography>
+                            <TextField 
+                                variant="outlined"
+                                fullWidth
+                                name = "passwordverify"
+                                placeholder="비밀번호를 입력하세요"
+                                autoFocus
+                                id="passwordverify"
+                                autoComplete="current-password"
                         />
+                        </Box>
                     </Grid>
                     <Grid item xs={12}>
+                        <Box mt = {2}>
+                            <Typography component="label" variant="body2" style={{ marginBottom: "10px" }}>
+                                닉네임
+                            </Typography>
                         <TextField 
                             variant="outlined"
-                            required
                             fullWidth
                             name = "nickname"
-                            label="닉네임"
+                            placeholder="닉네임을 입력하세요"
                             autoFocus
                             id="nickname"
                             autoComplete="current-password"
                         />
+                        </Box>
                     </Grid>
                     <Grid item xs={12}>
-                        <Button
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            color="primary">
-                            회원가입
-                        </Button>
-                    </Grid>
-                </Grid>
-                <Grid container justify="flex-end">
-                    <Grid item>
-                        <Link to="/login" variant="body2">
-                            이미 계정이 있습니까? 로그인하세요.
-                        </Link>
+                        <Box mt = {2}>
+                            <Button
+                                type="submit"
+                                fullWidth
+                                variant="contained"
+                                style={{ fontWeight: "bold" }}
+                                sx={{ height: "56px", fontSize: "1rem", backgroundColor: "#D9D9D9", color: "white", boxShadow: 'none' }}
+                                color="primary">
+                                회원가입
+                            </Button>
+                        </Box>
                     </Grid>
                 </Grid>
             </form>

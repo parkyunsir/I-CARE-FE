@@ -38,28 +38,32 @@ const SearchQuestion = (props) => {
     };
 
     return (
+        <div className='searchQ'>
         <TextField 
-        className="searchBox" 
-        type="text" 
-        placeholder="문답을 검색해보세요." 
-        onChange={onInputChange}
-        onKeyPress={enterKeyEventHandler}
-        variant="outlined"
-        value={output}
-        name="output"
-        style={{ 
-          width: '180px',
-        }}
-        size="small"
-        InputProps={{
-          style: { fontSize: 11, marginTop:'2px', paddingTop:'2px' }, // placeholder와 입력 텍스트의 크기 설정
-          endAdornment: (
-            <InputAdornment position="start">
-              <SearchIcon className="searchIcon" onClick={onButtonClick}/>
-            </InputAdornment>
-          ),
-        }}
+            className="searchBox" 
+            type="text" 
+            placeholder="문답을 검색해보세요." 
+            onChange={onInputChange}
+            onKeyPress={enterKeyEventHandler}
+            variant="standard"
+            value={output}
+            name="output"
+            style={{ 
+            width: '160px',
+            marginLeft: '10px',
+            height: '35px',
+            }}
+            
+            InputProps={{
+            style: { fontSize: 12, paddingTop:'2px', color: 'black' }, // placeholder와 입력 텍스트의 크기 설정
+            endAdornment: (
+                <InputAdornment position="start">
+                <SearchIcon className="searchIcon" onClick={onButtonClick}/>
+                </InputAdornment>
+            ),
+            }}
         />
+        </div>
     );
 }
 

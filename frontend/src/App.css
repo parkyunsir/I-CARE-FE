@@ -11,11 +11,18 @@
 }
 
 .app-container {
-  flex: 1; /* This allows the container to grow and fill available space */
+  flex: 1;
   padding: 20px;
   box-sizing: border-box;
+  max-height: calc(100vh - 116px);
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
+.app-container::-webkit-scrollbar {
+  display: none;
+}
 
 .app-container > .navbar {
   margin-top: 10px;

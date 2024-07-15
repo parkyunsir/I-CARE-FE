@@ -1,0 +1,42 @@
+.topic {
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid #aaa;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.chatbotStart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.chatbotStart .startButton {
+  background-color: #6271f5;
+  color: white;
+  padding: 15px 20px;
+  margin: 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+}
+
+.chatbotStart .startButton:hover {
+  background-color: #454fac;
+}
+
+.chatbotStart .feedbackButton {
+  padding: 10px 15px;
+  background-color: #fff;
+  color: #666;
+  border: 1px solid #bbb;
+  border-radius: 10px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.chatbotStart .feedbackButton:hover {
+  background-color: #eee;
+}

@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './css/Splash.css'; // CSS 파일을 추가합니다.
+import './css/Splash.css'; 
 
-const Splash = () => {
+const OnBoarding4 = () => {
     const navigate = useNavigate();
   
     useEffect(() => {
       localStorage.clear();
       const timer = setTimeout(() => {
-        navigate('/onboarding1'); // 3초 후에 로그인 페이지로 이동 -> 온보딩1 페이지로 이동
-      }, 3000);
+        navigate('/login'); 
+      }, 2000);
   
       return () => {
         clearTimeout(timer);
@@ -19,7 +19,7 @@ const Splash = () => {
     return (
       <div className="splash-screen">
         <img
-          src={`${process.env.PUBLIC_URL}/splash.png`}
+          src={`${process.env.PUBLIC_URL}/onboarding4.png`}
           alt="Splash"
           className="splash-image" // 추가: 이미지에 클래스 적용
         />
@@ -27,4 +27,4 @@ const Splash = () => {
     );
   };
   
-  export default Splash;
+  export default OnBoarding4;

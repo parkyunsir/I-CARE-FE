@@ -1,0 +1,23 @@
+body {
+    margin: 0; /* 기본 마진 제거 */
+    padding: 0; /* 기본 패딩 제거 */
+  }
+  
+  .onboarding-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* 다른 요소들보다 위에 표시 */
+  }
+  
+  .onboarding-image {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+  }

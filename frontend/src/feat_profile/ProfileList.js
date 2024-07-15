@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { getProfileList } from "./api/api-profile";
 import './css/ProfileList.css';
-import Header from "../Header";
 import Profile from "./Profile";
 import AddProfile from "./AddProfile";
 import PageFirst from "../PageFirst";
 
 const ProfileList = () => {
+  const header = {
+    title: "워드클라우드",
+    type: "home"
+  };
   const [profileList, setProfileList] = useState([]);
   const [sort, setSort] = useState("latest");
 
@@ -48,9 +51,8 @@ const ProfileList = () => {
   }
 
   return (
-    <PageFirst>
+    <PageFirst header={header}>
     <div className="profileList">
-      <Header title="워드클라우드" type="home" />
       <div style={{display: 'flex', justifyContent: 'space-between', marginBottom: '10px'}}>
         <div className="sort">
           <select onChange={handleSort} value={sort}>
