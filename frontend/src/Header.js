@@ -25,7 +25,7 @@ const Header = (props) => {
                 <div className="header_left">
                     <SettingsOutlinedIcon
                         sx={{cursor: 'pointer'}}
-                        onClick={() => navigate('/')} />
+                        onClick={() => navigate('/mainsettings')} />
                 </div>
                 <div className="header_title">{title}</div>
                 <div className="header_right">
@@ -45,6 +45,12 @@ const Header = (props) => {
                 </div>
                 <div className="header_title">{title}</div>
                 <div className="header_right"></div>
+            </div>
+        )
+    } else if(type === "none") {
+        return (
+            <div className="Header">
+                <div className="header_title">{title}</div>
             </div>
         )
     }

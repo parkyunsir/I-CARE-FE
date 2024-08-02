@@ -7,7 +7,6 @@ const MDoneQuestion = (props) => {
   const isOpen = props.isOpen;
   const onClose = props.onClose;
 
-
   if(!isOpen) return null;
   return (
     <Modal onClose={onClose}>

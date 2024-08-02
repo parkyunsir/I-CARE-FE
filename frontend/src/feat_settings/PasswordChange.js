@@ -17,8 +17,8 @@ function PasswordChange() {
 
     return (
         <div className="app-wrapper">
+            <Header title="내 정보" type="back" />
             <div className="app-container">
-                <Header title="내 정보" type="back"> </Header>
                 <Box mt={2}>
                 <form noValidate onSubmit={handleSubmit}>
                     <Grid container spacing={2}>

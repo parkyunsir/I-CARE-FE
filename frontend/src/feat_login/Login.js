@@ -12,23 +12,23 @@ const Login = () => {
       if (localStorage.getItem("childId")) {
         navigate("/chatbot");
       } else {
-        navigate("/addchild");
+        navigate("/selectchild");
       }
     }
   }, [navigate]);
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.target);
     const email = data.get("email");
     const password = data.get("password");
 
-    await signin({ email: email, password: password }).then((response) => {
-      if (response) {
-        localStorage.setItem("ACCESS_TOKEN", response.token);
-        navigate("/addchild");
-        // navigate("/chatbot"); // /chatbot으로 위치 변경하기
-      }
+    signin({ email: email, password: password })
+      .then((response) => {
+        if (response) {
+          navigate("/selectchild");
+          // navigate("/chatbot"); // /chatbot으로 위치 변경하기
+        }
     });
   };
 

@@ -16,26 +16,27 @@ function MainSettings() {
 
     return (
         <div className="app-wrapper">
-            <div className="app-container">
-
-                <Header title="설정" type="back" />
-                <Grid container direction="column" alignItems="stretch" spacing={1}  textAlign=  "left">
+            <Header title="설정" type="back" />
+            <div>
+                <Grid container direction="column" alignItems="stretch" textAlign=  "left">
                     <Grid item xs={12}>
                         <Button
-                            variant="contained"
+                            variant="outlined"
                             fullWidth
-                            color="primary"
-                            style={{ backgroundColor: "#FFFFFF", color: "#000000", textAlign: "left" , height: "56px" }}
+                            sx={{ backgroundColor: "#FFFFFF", color: "#000000", border: '1px solid gray', textAlign: "left" , height: "56px" ,
+                                '&:hover': { backgroundColor: "#ddd", border: '1px solid gray' }
+                            }}
                         >
                             icare@naver.com
                         </Button>
                     </Grid>
                     <Grid item xs={12}>
                         <Button
-                            variant="contained"
+                            variant="outlined"
                             fullWidth
-                            color="primary"
-                            style={{ backgroundColor: "#FFFFFF", color: "#000000", textAlign: "left" , height: "56px"}}
+                            sx={{ backgroundColor: "#FFFFFF", color: "#000000", border: '1px solid gray', textAlign: "left" , height: "56px" ,
+                                '&:hover': { backgroundColor: "#ddd", border: '1px solid gray' }
+                            }}
                             onClick={handleNavigateToChangePassword}
                         >
                             내 정보
@@ -43,10 +44,11 @@ function MainSettings() {
                     </Grid>
                     <Grid item xs={12}>
                         <Button
-                            variant="contained"
+                            variant="outlined"
                             fullWidth
-                            color="primary"
-                            style={{ backgroundColor: "#FFFFFF", color: "#000000", textAlign: "left" , height: "56px"}}
+                            sx={{ backgroundColor: "#FFFFFF", color: "#000000", border: '1px solid gray', textAlign: "left" , height: "56px" ,
+                                '&:hover': { backgroundColor: "#ddd", border: '1px solid gray' }
+                            }}
                             onClick={handleNavigateToSelectChild}
                         >
                             자녀 정보
@@ -54,20 +56,22 @@ function MainSettings() {
                     </Grid>
                     <Grid item xs={12}>
                         <Button
-                            variant="contained"
+                            variant="outlined"
                             fullWidth
-                            color="primary"
-                            style={{ backgroundColor: "#FFFFFF", color: "#000000", textAlign: "left" , height: "56px"}}
+                            sx={{ backgroundColor: "#FFFFFF", color: "#000000", border: '1px solid gray', textAlign: "left" , height: "56px" ,
+                                '&:hover': { backgroundColor: "#ddd", border: '1px solid gray' }
+                            }}
                         >
                             로그아웃
                         </Button>
                     </Grid>
                     <Grid item xs={12}>
                         <Button
-                            variant="contained"
+                            variant="outlined"
                             fullWidth
-                            color="primary"
-                            style={{ backgroundColor: "#FFFFFF", color: "#000000", textAlign: "left" , height: "56px"}}
+                            sx={{ backgroundColor: "#FFFFFF", color: "#000000", border: '1px solid gray', textAlign: "left" , height: "56px" ,
+                                '&:hover': { backgroundColor: "#ddd", border: '1px solid gray' }
+                            }}
                         >
                             회원탈퇴
                         </Button>

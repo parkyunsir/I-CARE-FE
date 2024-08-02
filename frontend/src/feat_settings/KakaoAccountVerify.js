@@ -11,8 +11,8 @@ function KakaoAccountVerify() {
 
     return (
         <div className="app-wrapper">
+            <Header title="내 정보" type="back" />
             <div className="app-container">
-                <Header title="내 정보" type="back"> </Header>
                     <form noValidate onSubmit={handleSubmit}>
                         <Grid container spacing={2}>
                             <Grid item xs={12}>

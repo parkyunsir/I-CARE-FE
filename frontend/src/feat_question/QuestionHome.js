@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Select from 'react-select';
 import { Divider, List } from "@mui/material";
 import "./css/QuestionHome.css";
@@ -17,7 +17,7 @@ const QuestionHome = () => {
   };
   const [items, setItems] = useState([]);
   const [input, setInput] = useState('오늘의 질문을 준비하는 중입니다.'); // 추가된 상태
-  const [sortOrder, setSortOrder] = useState(options[1]); // 기본값을 최신순으로 설정
+  const [sortOrder, setSortOrder] = useState(options[0]); // 기본값을 최신순으로 설정
   const [modalOpen, setModalOpen] = useState(false);
   
   const date = new Date(); // 날짜 받아오기  
@@ -45,6 +45,14 @@ const QuestionHome = () => {
   const handleInputQuestion = () => {
     inputQuestion(date, setInput);
   }
+
+  const inputRef = useRef(null);
+
+  const handleClick = () => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
 
   useEffect(() => {
     showQuestion(setItems);
@@ -80,41 +88,46 @@ const QuestionHome = () => {
       </List>
   );
 
-  const questionList = sortOrder === options[1] ? questionNewList : questionOldList;
+  const questionList = sortOrder === options[0] ? questionNewList : questionOldList;
 
+  const None = ({onClick}) => 
+    <div className="none" onClick={onClick}>
+      일일문답이 없습니다. <br />
+      일일문답을 작성해주세요.
+    </div>;
+    
   return (
     <PageFirst header={header}>
-    <div>
-
+    <div className="questionHome">
       <div className="todayInput">{input}</div>
 
       <AddQuestion postQuestion={handleAddQuestion} 
-       date={date} items={items}/>
+      date={date} items={items}
+      ref={inputRef}/>
 
       <div className="search"> 
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <Select
+            value={sortOrder}
+            onChange={handleSortChange}
+            options={options}
+            styles={customStyles}
+            className="selectBox"
+          />
+          <SearchQuestion searchQuestion={handleSearchQuestion}/> {/* 검색부분 */}
+        </div>
 
-
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Select
-          value={sortOrder}
-          onChange={handleSortChange}
-          options={options}
-          styles={customStyles}
-          className="selectBox"
-        />
-        <SearchQuestion searchQuestion={handleSearchQuestion}/> {/* 검색부분 */}
-      </div>
         <MSearchQuestion 
           isOpen={modalOpen} onClose={handleCloseModal} /> {/* 모달부분 */}
-        
       </div>
 
-      num : {num}
-      
-      <div className="questionList">
-      {questionList}
-      </div>
+      {/* num : {num} */}
 
+      <div>
+      {num === 0 ? <None onClick={handleClick}/> : 
+      <div className="questionList">{questionList}</div>}
+      </div>
+    
     </div>
     </PageFirst>
   );

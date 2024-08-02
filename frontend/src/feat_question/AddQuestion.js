@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { forwardRef, useState } from "react";
 import { InputAdornment, TextField } from "@mui/material";
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
@@ -6,10 +6,12 @@ import "./css/AddQuestion.css";
 import MDoneQuestion from "./modal/MDoneQuestion";
 import MCheckQuestion from "./modal/MCheckQuestion";
 
-const AddQuestion = (props) => {
+const AddQuestion = forwardRef((props, ref) => {
     const items = props.items;
     const date = props.date; // 날짜 받아오기 
-    const Stringdate = `${date.getFullYear()}-0${date.getMonth()+1}-${date.getDate()}`; // 오늘 날짜
+    const Stringdate = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`; // 오늘 날짜
+
+    // const Stringdate = `${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}:00`; // 오늘 날짜
 
     const postQuestion = props.postQuestion; // 등록하는 함수
 
@@ -60,17 +62,17 @@ const AddQuestion = (props) => {
       if (e.key === 'Enter') {
           setIsHovered(true);
           onButtonClick();
-      }}
+    }}
     const enterKeyUp = (e) => {
       if (e.key === 'Enter') {
           setIsHovered(false);
-      }}
+    }}
 
     // button 동작 함수 (v 버튼을 눌러야 추가가 된다.)
     const onButtonClick = () => {
-        if (question.output!==""){ // 빈칸이면 등록 안 됨
-          setModalCheckOpen(true); // 정말 작성?
-        }
+      if (question.output!==""){ // 빈칸이면 등록 안 됨
+        setModalCheckOpen(true); // 정말 작성?
+      }
     };
     
     // [modal] 버튼 클릭
@@ -93,7 +95,8 @@ const AddQuestion = (props) => {
 
   return (
     <div className="addQ">
-      <TextField 
+      <TextField
+        inputRef={ref}
         className="todayOutput"
         name="output"
         value={question.output}
@@ -136,11 +139,10 @@ const AddQuestion = (props) => {
 
     <MCheckQuestion
         isOpen={modalCheckOpen} onClose={handleCloseCheckModal}
-        onOutputClick={onOutputClick}
-         />
+        onOutputClick={onOutputClick} />
     
     </div>
   );
-}
+});
 
 export default AddQuestion;
