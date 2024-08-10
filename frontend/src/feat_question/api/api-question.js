@@ -1,7 +1,5 @@
 import { call } from "../../api/ApiService";
 
-const childId = localStorage.getItem("childId");
-
 // 전체 출력
 export const showQuestion = (setItems) => {
   const childId = localStorage.getItem("childId");
