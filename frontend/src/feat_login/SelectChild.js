@@ -52,8 +52,8 @@ function SelectChild() {
 
     return (
         <div className="app-wrapper">
+            <Header title="자녀 정보" type="back"></Header>
             <div className="app-container">
-                <Header title="자녀 정보" type="back"></Header>
                 <Box mt={7}></Box>
                 <Grid container direction="column" alignItems="center" spacing={2}>
                     {loading ? (
@@ -83,6 +83,7 @@ function SelectChild() {
                                 >
                                     <img 
                                         src={`${process.env.PUBLIC_URL}/SelectChildButton.png`} 
+                                        onClick={handleSelectChild}
                                         alt={child.name} 
                                         style={{ 
                                             width: "100%",  
