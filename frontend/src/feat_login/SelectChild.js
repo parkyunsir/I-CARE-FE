@@ -80,10 +80,10 @@ function SelectChild() {
                                             backgroundColor: "#454FAC", 
                                         }
                                     }}
+                                    onClick={() => handleSelectChild(child.childId)}
                                 >
                                     <img 
                                         src={`${process.env.PUBLIC_URL}/SelectChildButton.png`} 
-                                        onClick={handleSelectChild}
                                         alt={child.name} 
                                         style={{ 
                                             width: "100%",  

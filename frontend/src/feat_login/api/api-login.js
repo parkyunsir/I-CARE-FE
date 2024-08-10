@@ -24,8 +24,8 @@ export function addchild(userDTO) {
             console.log("Response from server:", response); // 서버 응답 확인
             if (response && response.data && response.data.length > 0 && response.data[0].childId) {
                 const childId = response.data[0].childId; // 응답 데이터에서 childId 추출
-                //localStorage.setItem("childId", childId); // 로컬 스토리지에 childId 저장
-                localStorage.setItem("childId", JSON.stringify(childId));
+                localStorage.setItem("childId", childId); // 로컬 스토리지에 childId 저장
+                //localStorage.setItem("childId", JSON.stringify(childId));
             }
             return response;
         })
