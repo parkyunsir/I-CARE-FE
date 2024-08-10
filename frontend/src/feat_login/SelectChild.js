@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Container, Grid, Button, CircularProgress, Typography, Box } from "@mui/material";
 import { selectchild } from "./api/api-login";
+import { useNavigate } from "react-router-dom";
 import Header from "../Header";
 import AddIcon from '@mui/icons-material/Add';
 
 function SelectChild() {
     const [childList, setChildList] = useState([]);
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetchChildList();
