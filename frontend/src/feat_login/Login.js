@@ -33,7 +33,7 @@ const Login = () => {
   };
 
   return (
-    <Container component="main" maxWidth="xs" style={{ marginTop: "8%" }}>
+    <Container component="main" maxWidth="xs">
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <Box mt={8}>

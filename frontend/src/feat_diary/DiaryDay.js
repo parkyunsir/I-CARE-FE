@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import './css/DiaryCalendar.css';
 import { format, isSameMonth, isSameDay } from "date-fns";
 import MAddDiary from "./modal/MAddDiary";
-import { getIconFont } from "./api/api-icon";
 
 const DiaryDay = (props) => {
   const [icon, setIcon] = useState('');
@@ -23,12 +22,7 @@ const DiaryDay = (props) => {
     if(props.diary) {
       const diary = props.diary;
       setDiary(diary);
-      getIconFont(diary.iconId)
-        .then(iconFont => {
-          if(iconFont) {
-            setIcon(iconFont);
-          }
-        });
+      setIcon(diary.icon);
     } else {
       setDiary(null);
       setIcon('');
@@ -36,7 +30,7 @@ const DiaryDay = (props) => {
   }, [props.diary]);
 
   const handleSelected = () => {
-    onSelected(diary, icon);
+    onSelected(diary);
   }
 
   const handleOpenPopup = () => {

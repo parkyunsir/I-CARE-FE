@@ -1,8 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import Modal from '../Modal';
 import MAddIcon from "./modal/MAddIcon";
 import './css/AddDiary.css';
 import { postDiary, putDiary } from "./api/api-diary";
+import { getIconList } from "./api/api-icon";
 import PageFirst from "../PageFirst";
 
 const AddDiary = () => {
@@ -25,14 +27,16 @@ const AddDiary = () => {
     diaryId: oldDiary?.diaryId || null,
     date: formatDate(date),
     content: oldDiary?.content || "",
-    iconId: null
+    icon: null
   });
+  const [icons, setIcons] = useState([]);
   
   const stringDate = location.state?.stringDate;
   const weekdays = ['일', '월', '화', '수', '목', '금', '토'];
   const weekday = weekdays[date.getDay()];
 
   const textareaRef = useRef(null);
+  const [isLoading, setIsLoading] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   useEffect(() => {
@@ -52,7 +56,15 @@ const AddDiary = () => {
 
   const handleSaveOpenPopup = () => {
     if(diary.content) {
-      setIsPopupOpen(true);
+      setIsLoading(true);
+      getIconList(diary.content)
+        .then(iconList => {
+          if(iconList) {
+            setIsLoading(false);
+            setIcons(iconList);
+            setIsPopupOpen(true);
+          }
+        })
     }
   }
 
@@ -61,7 +73,7 @@ const AddDiary = () => {
   }
 
   const onSubmit = async () => {
-    if(diary.iconId) {
+    if(diary.icon) {
       setIsPopupOpen(false);
       if(diary.diaryId) {
         try {
@@ -97,8 +109,13 @@ const AddDiary = () => {
         onChange={onChange} ref={textareaRef}
         placeholder="오늘의 이야기를 들려주세요" />
       <button className="save" onClick={handleSaveOpenPopup}>저장</button>
+      {isLoading && 
+        <Modal>
+          <p>잠시만 기다려주세요.</p>
+        </Modal>
+      }
       <MAddIcon isOpen={isPopupOpen} onChange={onChange}
-        onSubmit={onSubmit} onClose={handleClosePopup} diary={diary} />
+        onSubmit={onSubmit} onClose={handleClosePopup} icons={icons} />
     </div>
     </PageFirst>
   );
