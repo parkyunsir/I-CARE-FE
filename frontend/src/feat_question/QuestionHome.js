@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Select from 'react-select';
 import { Divider, List } from "@mui/material";
 import "./css/QuestionHome.css";
@@ -46,6 +46,14 @@ const QuestionHome = () => {
     inputQuestion(date, setInput);
   }
 
+  const inputRef = useRef(null);
+
+  const handleClick = () => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
+
   useEffect(() => {
     showQuestion(setItems);
     handleInputQuestion();
@@ -82,13 +90,20 @@ const QuestionHome = () => {
 
   const questionList = sortOrder === options[0] ? questionNewList : questionOldList;
 
+  const None = ({onClick}) => 
+    <div className="none" onClick={onClick}>
+      일일문답이 없습니다. <br />
+      일일문답을 작성해주세요.
+    </div>;
+    
   return (
     <PageFirst header={header}>
-    <div>
+    <div className="questionHome">
       <div className="todayInput">{input}</div>
 
       <AddQuestion postQuestion={handleAddQuestion} 
-      date={date} items={items}/>
+      date={date} items={items}
+      ref={inputRef}/>
 
       <div className="search"> 
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -106,9 +121,13 @@ const QuestionHome = () => {
           isOpen={modalOpen} onClose={handleCloseModal} /> {/* 모달부분 */}
       </div>
 
-      num : {num}
-      
-      <div className="questionList">{questionList}</div>
+      {/* num : {num} */}
+
+      <div>
+      {num === 0 ? <None onClick={handleClick}/> : 
+      <div className="questionList">{questionList}</div>}
+      </div>
+    
     </div>
     </PageFirst>
   );
