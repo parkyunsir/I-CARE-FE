@@ -23,7 +23,7 @@ function SignUp() {
     };
 
     return (
-        <Container component="main" maxWidth="xs" style={{marginTop: "8%"}} >
+        <Container component="main" maxWidth="xs">
             <form noValidate onSubmit={handleSubmit}>
                 <Grid container spacing={2}>
                     <Grid item xs={12}>

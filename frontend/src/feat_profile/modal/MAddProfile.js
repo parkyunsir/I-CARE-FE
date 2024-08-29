@@ -6,6 +6,7 @@ const MAddProfile = (props) => {
   const isOpen = props.isOpen;
   const onClose = props.onClose;
   const onUpdate = props.onUpdate;
+  const initProfileState = props.initProfileState;
   const [isLoading, setIsLoading] = useState(false);
 
   const handleCloseLoading = () => {
@@ -20,6 +21,7 @@ const MAddProfile = (props) => {
           setIsLoading(false);
           onUpdate(response);
           onClose();
+          initProfileState();
         }
       });
   }
