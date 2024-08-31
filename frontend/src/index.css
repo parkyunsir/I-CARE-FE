@@ -29,5 +29,5 @@ code {
   min-height: 100vh;
   height: 100vh;
   background-color: white;
-  box-shadow: rgba(100, 100, 100, 0.2) 0px 0px 1px 1px;
+  /* box-shadow: rgba(100, 100, 100, 0.2) 0px 0px 1px 1px; */
 }
