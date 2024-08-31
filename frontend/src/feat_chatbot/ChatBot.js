@@ -6,9 +6,10 @@ import { useNavigate } from "react-router-dom";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 const ChatBot = (props) => {
-  const topic = props.topic;
+  const topic = props.topic.topic;
   const [chat, setChat] = useState({
-    request: ""
+    request: "",
+    chatBotTopicId: props.topic.chatBotTopicId
   });
   const [talks, setTalks] = useState([]);
   const [writable, setWritable] = useState(true);
@@ -31,7 +32,7 @@ const ChatBot = (props) => {
   };
 
   const onSubmitRequest = () => {
-    setChat({request: ""});
+    setChat({...chat, request: ""});
     setTalks([...talks, chat.request]);
     try {
       postRequest(chat)

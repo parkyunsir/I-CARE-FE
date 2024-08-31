@@ -8,7 +8,7 @@ export const getIconList = (content) => {
       }
     });
 }
-
+/*
 export const getIconFont = (iconId) => {
   return call(`/api/diary/icon?iconId=${iconId}`, "GET", null)
     .then((response) => {
@@ -16,4 +16,4 @@ export const getIconFont = (iconId) => {
         return response.font;
       }
     });
-}
+}*/

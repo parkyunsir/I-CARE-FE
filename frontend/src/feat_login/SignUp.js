@@ -2,6 +2,7 @@ import React from "react";
 import {Container, Grid, Typography, TextField, Button, Box} from "@mui/material";
 import {Link, useNavigate} from "react-router-dom";
 import {signup} from "./api/api-login";
+import "./css/FullHeight.css";
 
 function SignUp() {
     const navigate = useNavigate();
@@ -23,7 +24,8 @@ function SignUp() {
     };
 
     return (
-        <Container component="main" maxWidth="xs" style={{marginTop: "8%"}} >
+        <div className="full-height">
+        <Container component="main" maxWidth="xs">
             <form noValidate onSubmit={handleSubmit}>
                 <Grid container spacing={2}>
                     <Grid item xs={12}>
@@ -114,6 +116,7 @@ function SignUp() {
                 </Grid>
             </form>
         </Container>
+        </div>
     );
 };
 export default SignUp;

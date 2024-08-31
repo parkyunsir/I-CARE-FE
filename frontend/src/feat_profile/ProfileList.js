@@ -21,7 +21,7 @@ const ProfileList = () => {
           setProfileList(sortedList);
         }
       });
-  });
+  }, []);
 
   useEffect(() => {
     const sortedList = sortProfiles(profileList, sort);

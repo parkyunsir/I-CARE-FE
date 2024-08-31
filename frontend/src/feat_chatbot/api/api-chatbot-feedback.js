@@ -1,8 +1,9 @@
 import { call } from "../../api/ApiService";
 
-const childId = localStorage.getItem("childId");
+// const childId = localStorage.getItem("childId");
 
 export const postChat = () => {
+  const childId = localStorage.getItem("childId");
   return call(`/api/chatbot/feedback?childId=${childId}`, "POST", null)
     .then((response) => {
       if(response) {
@@ -12,6 +13,7 @@ export const postChat = () => {
 }
 
 export const getFeedbackList = () => {
+  const childId = localStorage.getItem("childId");
   return call(`/api/chatbot/feedback/list?childId=${childId}`, "GET", null)
     .then((response) => {
       if(response) {

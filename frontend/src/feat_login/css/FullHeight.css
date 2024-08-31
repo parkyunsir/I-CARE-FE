@@ -1,0 +1,7 @@
+.full-height {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /* background-color: #a82473; */
+    box-shadow: rgba(100, 100, 100, 0.2) 0px 0px 1px 1px;
+}

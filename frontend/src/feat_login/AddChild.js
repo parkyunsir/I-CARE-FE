@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Container, Grid, Typography, TextField, Button, Box, ToggleButton, ToggleButtonGroup } from "@mui/material";
 import { addchild } from "./api/api-login";
+import "./css/FullHeight.css";
 
 // 추후 회원가입 버튼 누르면 자녀를 등록할 수 있도록 수정
 
@@ -30,6 +31,7 @@ function AddChild() {
     };
 
     return (
+        <div className="full-height">
         <Container component="main" maxWidth="xs" style={{ marginTop: "8%" }}>
             <form noValidate onSubmit={handleSubmit}>
                 <Grid container spacing={2}>
@@ -120,6 +122,7 @@ function AddChild() {
                 </Grid>
             </form>
         </Container>
+        </div>
     );
 };
 

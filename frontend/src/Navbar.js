@@ -21,6 +21,7 @@ const Navbar = () => {
   useEffect(() => {
     const childId = localStorage.getItem("childId");
     if(childId) {
+      console.log("childId : ", childId);
       getChild(childId)
         .then((response) => {
           setChildName(response.nickname);

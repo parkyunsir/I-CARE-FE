@@ -29,6 +29,10 @@ const AddProfile = (props) => {
     setIsCheckPopupOpen(false);
   }
 
+  const initProfileState = () => {
+    setProfileState(0);
+  }
+
   const addButton = profileState >= 5 ? (
     <button onClick={handleOpenPopup} className="plus"><span>+</span> {profileState}/5</button>
   ) : (
@@ -39,7 +43,7 @@ const AddProfile = (props) => {
     <div>
       {addButton}
       <MAddProfile isOpen={isAddPopupOpen} onClose={handleClosePopup}
-        onUpdate={onUpdate} />
+        onUpdate={onUpdate} initProfileState={initProfileState} />
       <MCheck isOpen={isCheckPopupOpen} onClose={handleClosePopup} />
     </div>
   );

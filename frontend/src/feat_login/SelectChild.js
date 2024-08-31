@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Container, Grid, Typography, Button, CircularProgress } from "@mui/material";
+import { Container, Grid, Button, CircularProgress, Typography, Box } from "@mui/material";
 import { selectchild } from "./api/api-login";
-import Header from "../Header";
 import { useNavigate } from "react-router-dom";
+import Header from "../Header";
+import AddIcon from '@mui/icons-material/Add';
 
 function SelectChild() {
-    const navigate = useNavigate();
-    const [childList, setChildList] = useState([]); 
+    const [childList, setChildList] = useState([]);
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetchChildList();
@@ -51,29 +52,95 @@ function SelectChild() {
 
     return (
         <div className="app-wrapper">
+            <Header title="자녀 정보" type="back"></Header>
             <div className="app-container">
-            <Header title="자녀 정보" type="none" />
-            <Grid container direction="column" alignItems="center" spacing={2}>
-                {loading ? (
-                    <CircularProgress />
-                ) : (
-                    childList.map((child) => (
-                        <Grid item key={child.childId}>
-                            <Button variant="contained" color="primary"
-                                onClick={() => handleSelectChild(child.childId)}>
-                                {child.name}
-                            </Button>
-                        </Grid>
-                    ))
-                )}
-                <Grid item>
-                    <Button variant="contained"  color="secondary" backgroundColor = "#6271F5" onClick={handleAddChild}>
-                        +
-                    </Button>
+                <Box mt={7}></Box>
+                <Grid container direction="column" alignItems="center" spacing={2}>
+                    {loading ? (
+                        <CircularProgress />
+                    ) : (
+                        childList.map((child) => (
+                            <Grid item key={child.childId}>
+                                <Button 
+                                    variant="contained" 
+                                    sx={{
+                                        backgroundColor: "#F3F4FF",
+                                        borderRadius: "50%", 
+                                        width: 120, 
+                                        height: 120,
+                                        padding: 0, 
+                                        display: "flex",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                        boxShadow: "none", 
+                                        '&:hover': {
+                                            backgroundColor: "#E0E1FF", 
+                                        },
+                                        '&:active': {
+                                            backgroundColor: "#454FAC", 
+                                        }
+                                    }}
+                                    onClick={() => handleSelectChild(child.childId)}
+                                >
+                                    <img 
+                                        src={`${process.env.PUBLIC_URL}/SelectChildButton.png`} 
+                                        alt={child.name} 
+                                        style={{ 
+                                            width: "100%",  
+                                            height: "100%", 
+                                            borderRadius: "50%" 
+                                        }}
+                                    />
+                                </Button>
+                                <Typography 
+                                    variant="body1" 
+                                    sx={{ 
+                                        textAlign: 'center', 
+                                        marginTop: 2
+                                    }}
+                                >
+                                    {child.name}
+                                </Typography>
+                            </Grid>
+                        ))
+                    )}
+                    <Grid item>
+                        <Button 
+                            variant="contained"  
+                            color="secondary" 
+                            sx={{
+                                borderRadius: "50%", 
+                                width: 120, 
+                                height: 120,
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                backgroundColor: "#6271F5",
+                                boxShadow: "none",
+                                '&:hover': {
+                                    backgroundColor: "#454FAC", 
+                                },
+                                '&:active': {
+                                    backgroundColor: "#454FAC", 
+                                }
+                            }} 
+                            onClick={handleAddChild}
+                        >
+                            <AddIcon fontSize="large" />
+                        </Button>
+                        <Typography 
+                            variant="body1" 
+                            sx={{ 
+                                textAlign: 'center', 
+                                marginTop: 2 
+                            }}
+                        >
+                            자녀 계정 추가
+                        </Typography>
+                    </Grid>
                 </Grid>
-            </Grid>
+            </div>
         </div>
-    </div>
     );
 }
 

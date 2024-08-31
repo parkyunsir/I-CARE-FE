@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const DiarySummary = (props) => {
   const navigate = useNavigate();
   const diary = props.selectedDiary.diary;
-  const icon = props.selectedDiary.icon;
+  //const icon = props.selectedDiary.icon;
   const date = new Date(diary.date);
   const weekdays = ['일', '월', '화', '수', '목', '금', '토'];
   const day = weekdays[date.getDay()];
@@ -22,7 +22,7 @@ const DiarySummary = (props) => {
         <div className="date">
           {date.getFullYear()}년 {date.getMonth() + 1}월 {date.getDate()}일 ({day})
         </div>
-        <div className="iconDetail">{icon}</div>
+        <div className="iconDetail">{diary.icon}</div>
       </div>
       <div className="content">
         {summary}

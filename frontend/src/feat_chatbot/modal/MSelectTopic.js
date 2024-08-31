@@ -33,7 +33,7 @@ const MSelectTopic = (props) => {
           }
         }
       })
-  });
+  }, []);
 
   const handleTopicClick = (topic) => {
     setSelectedTopic(topic);
@@ -41,7 +41,7 @@ const MSelectTopic = (props) => {
 
   const onSelect = () => {
     if(selectedTopic.chatBotTopicId) {
-      onSelectTopic(selectedTopic.topic);
+      onSelectTopic(selectedTopic);
     }
   }
 

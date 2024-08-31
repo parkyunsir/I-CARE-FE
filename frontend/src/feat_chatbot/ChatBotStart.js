@@ -13,7 +13,10 @@ const ChatBotStart = () => {
   };
   const navigate = useNavigate();
   const [start, setStart] = useState(false);
-  const [topic, setTopic] = useState('');
+  const [topic, setTopic] = useState({
+    chatBotTopicId: null,
+    topic: ''
+  });
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   const handleClosePopup = () => {
